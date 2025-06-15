@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avanitor | Bot Multifuncional</title>
+    <style>
+        :root {
+            --azul: #007BFF;
+            --ciano: #00FFFF;
+            --branco: #ffffff;
+            --preto: #121212;
+            --cinza: #1f1f1f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--branco);
+            color: var(--preto);
+            transition: background-color 0.4s, color 0.4s;
+            overflow-x: hidden;
+        }
+
+        .dark {
+            background-color: var(--cinza);
+            color: var(--branco);
+        }
+
+        header {
+            background-color: var(--azul);
+            color: var(--branco);
+            padding: 40px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        nav {
+            background-color: var(--ciano);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            animation: slideDown 1s ease forwards;
+        }
+
+        nav a {
+            color: var(--preto);
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--azul);
+        }
+
+        .container {
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: var(--azul);
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--ciano);
+            color: var(--preto);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--ciano);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 999;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--azul);
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: rgba(0, 123, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            width: 250px;
+            transition: transform 0.3s, background-color 0.3s;
+            cursor: default;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(0, 123, 255, 0.2);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--azul);
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width: 768px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
+    <header>
+        <h1>Avanitor</h1>
+        <p>O bot multifuncional perfeito pro seu servidor</p>
+    </header>
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Comandos</a>
+        <a href="#">Recursos</a>
+        <a href="https://discord.gg/SEU_LINK_SUPORTE" target="_blank">Suporte</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=SEU_ID&permissions=8&scope=bot" target="_blank">Convide</a>
+    </nav>
+
+    <div class="container">
+        <h2>Por que escolher o Avanitor?</h2>
+        <p>Oferecemos soluções completas para seu servidor. Controle, diversão e produtividade tudo em um só bot.</p>
+        
+        <div class="features">
+            <div class="card">
+                <h3>💸 Economia</h3>
+                <p>Sistema de moedas, loja, apostas e mais!</p>
+            </div>
+            <div class="card">
+                <h3>🎉 Diversão</h3>
+                <p>Comandos divertidos, jogos, memes e interação com os membros.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Moderação</h3>
+                <p>Ferramentas para manter seu servidor seguro e organizado.</p>
+            </div>
+            <div class="card">
+                <h3>⏰ Lembretes</h3>
+                <p>Configure lembretes para você ou para todo o servidor.</p>
+            </div>
+            <div class="card">
+                <h3>🧰 Utilidades</h3>
+                <p>Ferramentas úteis como enquetes, informações, tempo, sugestões e muito mais.</p>
+            </div>
+        </div>
+
+        <br><br>
+        <button class="btn" onclick="window.location.href='https://discord.com/oauth2/authorize?client_id=SEU_ID&permissions=8&scope=bot'">Convide Agora</button>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const button = document.querySelector('.theme-toggle');
+            if (document.body.classList.contains('dark')) {
+                button.textContent = '☀️';
+            } else {
+                button.textContent = '🌙';
+            }
+        }
+    </script>
+
+</body>
+</html>
