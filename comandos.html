@@ -13,6 +13,10 @@
             --cinza: #1f1f1f;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -30,8 +34,13 @@
         header {
             background-color: var(--azul);
             color: var(--branco);
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
         }
 
         nav {
@@ -48,10 +57,40 @@
             margin: 0 20px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1rem;
             transition: color 0.3s;
         }
 
         nav a:hover {
+            color: var(--azul);
+        }
+
+        .container {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .commands-list {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .command {
+            background-color: rgba(0, 123, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .command:hover {
+            transform: translateY(-5px);
+            background-color: rgba(0, 123, 255, 0.2);
+        }
+
+        .command h3 {
+            margin: 0;
             color: var(--azul);
         }
 
@@ -72,25 +111,16 @@
             background-color: var(--azul);
         }
 
-        .container {
-            padding: 40px 20px;
-        }
-
-        .command {
-            background-color: rgba(0, 123, 255, 0.1);
-            border-radius: 12px;
+        footer {
+            background-color: var(--azul);
+            color: var(--branco);
+            text-align: center;
             padding: 20px;
-            margin-bottom: 20px;
-            transition: background-color 0.3s;
+            margin-top: 50px;
         }
 
-        .command:hover {
-            background-color: rgba(0, 123, 255, 0.2);
-        }
-
-        .command h3 {
-            margin-top: 0;
-            color: var(--azul);
+        footer p {
+            margin: 5px;
         }
 
         @media(max-width: 768px) {
@@ -99,6 +129,7 @@
                 margin: 10px 0;
             }
         }
+
     </style>
 </head>
 <body>
@@ -106,50 +137,29 @@
     <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
     <header>
-        <h1>Avanitor</h1>
-        <p>Lista de Comandos</p>
+        <h1>Comandos do Avanitor</h1>
+        <p>Veja todos os comandos disponíveis no bot</p>
     </header>
 
     <nav>
         <a href="index.html">Início</a>
-        <a href="comandos.html">Comandos</a>
+        <a href="#">Comandos</a>
         <a href="#">Recursos</a>
-        <a href="https://discord.gg/SEU_SUPORTE" target="_blank">Suporte</a>
-        <a href="https://discord.com/oauth2/authorize?client_id=SEU_ID&permissions=8&scope=bot" target="_blank">Convide</a>
+        <a href="https://discord.gg/SEU_LINK_SUPORTE" target="_blank">Suporte</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1251544889917702166&permissions=8&scope=bot" target="_blank">Convide</a>
     </nav>
 
-    <div class="container" id="commands-list">
-        <!-- Comandos vão ser carregados aqui -->
+    <div class="container">
+        <div class="commands-list" id="commands"></div>
     </div>
 
+    <footer>
+        <p>© 2025 Avanitor. Todos os direitos reservados.</p>
+        <p>Desenvolvido por <strong>Slbimp</strong> — Programador, criador de bots, desenvolvedor e apaixonado por tecnologia.</p>
+        <p>Feito com 💙, dedicação e muito código!</p>
+    </footer>
+
     <script>
-        // 🔥 Dados dos comandos
-        const comandos = [
-    { nome: "8ball", descricao: "Responde perguntas aleatórias com previsões." },
-    { nome: "avatar", descricao: "Mostra o avatar de um usuário." },
-    { nome: "botinfo", descricao: "Mostra informações do bot." },
-    { nome: "caraoucoroa", descricao: "Joga cara ou coroa." },
-    { nome: "help", descricao: "Mostra a lista de comandos disponíveis." },
-    { nome: "fight", descricao: "Inicia uma luta divertida com outro usuário." },
-    { nome: "meme", descricao: "Envia um meme aleatório." },
-    { nome: "piada", descricao: "Conta uma piada engraçada." },
-    { nome: "ping", descricao: "Mostra o ping do bot." },
-    { nome: "serverinfo", descricao: "Mostra informações do servidor." },
-    { nome: "slot", descricao: "Máquina caça-níquel divertida." },
-    { nome: "userinfo", descricao: "Mostra informações de um usuário." }
-];
-
-        // 🧠 Carregar comandos
-        const lista = document.getElementById('commands-list');
-
-        comandos.forEach(cmd => {
-            const div = document.createElement('div');
-            div.className = 'command';
-            div.innerHTML = `<h3>/${cmd.nome}</h3><p>${cmd.descricao}</p>`;
-            lista.appendChild(div);
-        });
-
-        // 🌗 Tema claro/escuro
         function toggleTheme() {
             document.body.classList.toggle('dark');
             const button = document.querySelector('.theme-toggle');
@@ -159,6 +169,30 @@
                 button.textContent = '🌙';
             }
         }
+
+        const comandos = [
+            { nome: "8ball", desc: "Responde uma pergunta aleatória." },
+            { nome: "avatar", desc: "Mostra o avatar de um usuário." },
+            { nome: "botinfo", desc: "Informações do bot." },
+            { nome: "caraoucoroa", desc: "Joga cara ou coroa." },
+            { nome: "help", desc: "Mostra a lista de comandos." },
+            { nome: "fight", desc: "Inicia uma luta divertida entre usuários." },
+            { nome: "meme", desc: "Envia um meme aleatório." },
+            { nome: "piada", desc: "Conta uma piada." },
+            { nome: "ping", desc: "Mostra o ping do bot." },
+            { nome: "serverinfo", desc: "Informações sobre o servidor." },
+            { nome: "slot", desc: "Jogo de caça-níquel." },
+            { nome: "userinfo", desc: "Mostra informações de um usuário." }
+        ];
+
+        const container = document.getElementById('commands');
+
+        comandos.forEach(cmd => {
+            const div = document.createElement('div');
+            div.className = 'command';
+            div.innerHTML = `<h3>/${cmd.nome}</h3><p>${cmd.desc}</p>`;
+            container.appendChild(div);
+        });
     </script>
 
 </body>
